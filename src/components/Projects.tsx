@@ -79,6 +79,7 @@ function ProjectPreview({ title, gradient, accentColor }: { title: string; gradi
 interface Project {
   id: number
   title: string
+  subtitle: string
   description: string
   tags: string[]
   githubUrl: string
@@ -152,13 +153,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* Card body */}
       <div className="flex flex-col flex-1 p-5">
         {/* Title + folder icon */}
-        <div className="flex items-center gap-2.5 mb-2">
-          <div className={cn('w-7 h-7 rounded-lg flex items-center justify-center border shrink-0', tagColorMap[project.accentColor])}>
+        <div className="flex items-start gap-2.5 mb-2">
+          <div className={cn('w-7 h-7 rounded-lg flex items-center justify-center border shrink-0 mt-0.5', tagColorMap[project.accentColor])}>
             <Folders size={13} />
           </div>
-          <h3 className="text-sm font-bold text-white group-hover:text-gradient-cyan transition-all duration-300 leading-snug">
-            {project.title}
-          </h3>
+          <div>
+            <h3 className="text-sm font-bold text-white group-hover:text-gradient-cyan transition-all duration-300 leading-snug">
+              {project.title}
+            </h3>
+            <p className={cn('text-[10px] font-medium mt-0.5', tagColorMap[project.accentColor].split(' ')[0])}>
+              {project.subtitle}
+            </p>
+          </div>
         </div>
 
         {/* Description */}
@@ -244,12 +250,12 @@ export function Projects() {
             <span className="text-xs font-medium text-purple-300 tracking-wide">My Work</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Featured{' '}
-            <span className="text-gradient">Projects</span>
+            Projects I've{' '}
+            <span className="text-gradient">Built</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
-            A curated selection of projects I've built — from production SaaS platforms to
-            open-source tooling and experimental side projects.
+            Three real-world, full-stack projects — from AI-powered campus tools to edtech
+            platforms and AI course generators.
           </p>
         </motion.div>
 

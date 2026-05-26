@@ -1,10 +1,10 @@
 export const personalInfo = {
   name: 'Anup Gupta',
-  role: 'Full-Stack Developer',
-  tagline: 'Building digital experiences that matter.',
-  bio: "I craft performant, scalable web applications with a keen eye for design. From pixel-perfect UIs to robust backend systems, I bridge the gap between elegant aesthetics and technical excellence.",
-  location: 'India',
-  email: 'anupgupta@example.com',
+  role: 'Full Stack Developer',
+  tagline: 'Full Stack Developer | Problem Solver | DSA Enthusiast',
+  bio: 'I am a Computer Science student at MMU Gorakhpur, building modern web applications with React, Next.js, Node.js, and Express. I enjoy solving real-world problems, learning new technologies, and turning ideas into clean, scalable products. I also have a strong foundation in Data Structures and Algorithms and competitive programming.',
+  location: 'Gorakhpur, Uttar Pradesh, India',
+  email: 'anupg9643@gmail.com',
   resumeUrl: '#',
   avatarInitials: 'AG',
 }
@@ -12,22 +12,22 @@ export const personalInfo = {
 export const socialLinks = [
   {
     label: 'GitHub',
-    href: 'https://github.com/',
+    href: 'https://github.com/Anup-Gupta01',
     icon: 'github',
   },
   {
     label: 'LinkedIn',
-    href: 'https://linkedin.com/',
+    href: 'https://linkedin.com/in/anup-gupta01',
     icon: 'linkedin',
   },
   {
     label: 'LeetCode',
-    href: 'https://leetcode.com/',
+    href: 'https://leetcode.com/u/anupg9643/',
     icon: 'leetcode',
   },
   {
     label: 'Email',
-    href: 'mailto:anupgupta@example.com',
+    href: 'mailto:anupg9643@gmail.com',
     icon: 'mail',
   },
   {
@@ -39,37 +39,36 @@ export const socialLinks = [
 
 export const skills = {
   frontend: [
-    'React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Redux'
+    'React.js', 'Next.js', 'Tailwind CSS', 'Redux', 'JavaScript', 'HTML/CSS',
   ],
   backend: [
-    'Node.js', 'Express', 'Python', 'FastAPI', 'PostgreSQL', 'MongoDB'
+    'Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'PostgreSQL', 'Authentication',
   ],
   devops: [
-    'Docker', 'AWS', 'CI/CD', 'Linux', 'Git', 'Kubernetes'
+    'Git', 'GitHub', 'Cloudinary', 'Vercel', 'Postman', 'Drizzle ORM',
   ],
   tools: [
-    'Figma', 'VS Code', 'Postman', 'Jest', 'Webpack', 'Vite'
+    'C++', 'DSA', 'Competitive Programming', 'Razorpay', 'Gemini API', 'YouTube API',
   ],
 }
 
-export const techStack = [
-  { name: 'React', color: 'cyan' },
-  { name: 'TypeScript', color: 'blue' },
-  { name: 'Node.js', color: 'green' },
-  { name: 'Python', color: 'yellow' },
-  { name: 'Next.js', color: 'white' },
-  { name: 'PostgreSQL', color: 'blue' },
-  { name: 'Docker', color: 'cyan' },
-  { name: 'AWS', color: 'orange' },
+export const heroAchievements = [
+  { label: 'B.Tech CSE, MMUT Gorakhpur', icon: '🎓' },
+  { label: 'CGPA 8.59', icon: '📊' },
+  { label: '450+ DSA Problems Solved', icon: '⚡' },
+  { label: 'LeetCode 1810+ Rating', icon: '🏆' },
+  { label: 'CodeChef 3-Star', icon: '⭐' },
+  { label: 'GATE CS Qualified', icon: '✅' },
 ]
 
 export const projects = [
   {
     id: 1,
-    title: 'Transport Management System',
-    description: 'A full-stack logistics platform with real-time tracking, route optimization, and automated dispatch management for fleet operators.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'WebSocket', 'Docker'],
-    githubUrl: 'https://github.com/',
+    title: 'PlacementPro',
+    subtitle: 'Campus Placement Portal',
+    description: 'A campus placement portal with role-based access for students and TnP admins, real-time application tracking, branch-wise analytics, and AI-powered resume analysis using Gemini API.',
+    tags: ['Next.js', 'Gemini API', 'MongoDB', 'Node.js', 'Cloudinary', 'REST APIs'],
+    githubUrl: 'https://github.com/Anup-Gupta01',
     liveUrl: '#',
     featured: true,
     gradient: 'from-cyan-500/20 to-blue-500/20',
@@ -77,10 +76,11 @@ export const projects = [
   },
   {
     id: 2,
-    title: 'AI-Powered Code Review Tool',
-    description: 'Integrates with GitHub PRs to provide automated, context-aware code feedback using LLM APIs. Reduces review time by 60%.',
-    tags: ['Python', 'FastAPI', 'OpenAI', 'GitHub API', 'Redis'],
-    githubUrl: 'https://github.com/',
+    title: 'StudyVerse',
+    subtitle: 'EdTech Platform',
+    description: 'A multi-role learning platform for students, instructors, and admins with OTP-based authentication, role-specific dashboards, Razorpay payments, and improved API/database performance.',
+    tags: ['React.js', 'Express.js', 'Node.js', 'Redux', 'Razorpay', 'Cloudinary'],
+    githubUrl: 'https://github.com/Anup-Gupta01',
     liveUrl: '#',
     featured: true,
     gradient: 'from-purple-500/20 to-pink-500/20',
@@ -88,47 +88,15 @@ export const projects = [
   },
   {
     id: 3,
-    title: 'Real-Time Collaboration Board',
-    description: 'A Figma-inspired collaborative whiteboard with live cursors, shape tools, comments, and version history using CRDTs.',
-    tags: ['Next.js', 'WebSocket', 'Canvas API', 'MongoDB', 'TypeScript'],
-    githubUrl: 'https://github.com/',
+    title: 'CourseGenie',
+    subtitle: 'AI Course Generator',
+    description: 'An AI-powered course generator that creates personalized learning paths using Gemini API, YouTube Data API, and PostgreSQL with Drizzle ORM.',
+    tags: ['Next.js', 'Gemini API', 'YouTube API', 'PostgreSQL', 'Drizzle ORM'],
+    githubUrl: 'https://github.com/Anup-Gupta01',
     liveUrl: '#',
     featured: true,
     gradient: 'from-blue-500/20 to-purple-500/20',
     accentColor: 'blue',
-  },
-  {
-    id: 4,
-    title: 'E-Commerce Analytics Dashboard',
-    description: 'Multi-tenant SaaS analytics dashboard with interactive charts, revenue forecasting, and customer segmentation insights.',
-    tags: ['React', 'D3.js', 'Express', 'PostgreSQL', 'Stripe'],
-    githubUrl: 'https://github.com/',
-    liveUrl: '#',
-    featured: false,
-    gradient: 'from-green-500/20 to-cyan-500/20',
-    accentColor: 'green',
-  },
-  {
-    id: 5,
-    title: 'DevOps Pipeline Visualizer',
-    description: 'Visualizes CI/CD pipeline stages, deployment history, and infrastructure state across multiple cloud providers.',
-    tags: ['React', 'TypeScript', 'AWS CDK', 'GraphQL', 'Kubernetes'],
-    githubUrl: 'https://github.com/',
-    liveUrl: '#',
-    featured: false,
-    gradient: 'from-orange-500/20 to-red-500/20',
-    accentColor: 'orange',
-  },
-  {
-    id: 6,
-    title: 'Open Source CLI Toolkit',
-    description: 'A collection of developer productivity tools: code scaffolding, git workflow automation, and environment management.',
-    tags: ['Node.js', 'TypeScript', 'Shell', 'NPM Package'],
-    githubUrl: 'https://github.com/',
-    liveUrl: '#',
-    featured: false,
-    gradient: 'from-pink-500/20 to-purple-500/20',
-    accentColor: 'pink',
   },
 ]
 
@@ -136,42 +104,42 @@ export const services = [
   {
     id: 1,
     title: 'Frontend Engineer',
-    description: 'Building fast, responsive, and visually stunning UIs with React and TypeScript. Pixel-perfect implementation with accessibility and performance baked in.',
+    description: 'Building responsive, pixel-perfect UIs with React.js and Next.js. Clean component design, smooth animations, and mobile-first layouts that users love.',
     icon: 'layers',
     color: 'cyan',
-    tags: ['React', 'TypeScript', 'Next.js', 'Framer Motion', 'Tailwind CSS'],
+    tags: ['React.js', 'Next.js', 'Tailwind CSS', 'Responsive UI', 'Redux'],
   },
   {
     id: 2,
     title: 'Backend Developer',
-    description: 'Designing RESTful and GraphQL APIs, microservices, and robust server-side systems that scale reliably under real-world load.',
+    description: 'Designing and building robust REST APIs, authentication systems, and database integrations using Node.js and Express.js.',
     icon: 'server',
     color: 'blue',
-    tags: ['Node.js', 'Python', 'FastAPI', 'PostgreSQL', 'Redis'],
+    tags: ['Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'PostgreSQL'],
   },
   {
     id: 3,
     title: 'Full Stack Developer',
-    description: 'End-to-end product delivery — from database schema and API design to polished frontend and cloud deployment, all in one.',
+    description: 'End-to-end MERN/full-stack applications — role-based dashboards, payment integration, AI features, and clean API + frontend integration.',
     icon: 'zap',
     color: 'purple',
-    tags: ['React', 'Node.js', 'MongoDB', 'Docker', 'AWS'],
+    tags: ['MERN Stack', 'Next.js', 'Razorpay', 'Cloudinary', 'Gemini API'],
   },
   {
     id: 4,
-    title: 'Software Developer',
-    description: 'Writing clean, maintainable, and well-tested code across platforms. Strong focus on system design, code quality, and engineering best practices.',
+    title: 'Problem Solver / DSA',
+    description: 'Strong problem-solving mindset with 450+ DSA problems solved. LeetCode 1810+ rating, CodeChef 3-star, and GATE CS qualified.',
     icon: 'code2',
     color: 'green',
-    tags: ['TypeScript', 'Python', 'Git', 'Jest', 'CI/CD'],
+    tags: ['C++', 'DSA', 'LeetCode', 'Competitive Programming', 'GATE CS'],
   },
 ]
 
 export const stats = [
-  { label: 'Years Experience', value: '3+' },
-  { label: 'Projects Shipped', value: '25+' },
-  { label: 'Open Source PRs', value: '120+' },
-  { label: 'Coffee / Day', value: '∞' },
+  { label: 'CGPA', value: '8.59' },
+  { label: 'DSA Problems', value: '450+' },
+  { label: 'LeetCode Rating', value: '1810+' },
+  { label: 'Projects Built', value: '3+' },
 ]
 
 export const navItems = [

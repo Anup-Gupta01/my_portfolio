@@ -16,8 +16,8 @@ const fadeUp = {
 const skillCategories = [
   { key: 'frontend' as const, label: 'Frontend', icon: Code2, color: 'cyan' },
   { key: 'backend' as const, label: 'Backend', icon: Server, color: 'blue' },
-  { key: 'devops' as const, label: 'DevOps & Cloud', icon: Cloud, color: 'purple' },
-  { key: 'tools' as const, label: 'Tools', icon: Wrench, color: 'pink' },
+  { key: 'devops' as const, label: 'DevOps & Tools', icon: Cloud, color: 'purple' },
+  { key: 'tools' as const, label: 'DSA & Others', icon: Wrench, color: 'pink' },
 ]
 
 const colorMap: Record<string, string> = {
@@ -47,12 +47,12 @@ export function About() {
             <span className="text-xs font-medium text-blue-300 tracking-wide">About Me</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            The person behind the{' '}
-            <span className="text-gradient">code</span>
+            The developer behind the{' '}
+            <span className="text-gradient">keyboard</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-            I'm a developer who cares deeply about the craft — writing clean, maintainable code
-            and building products that users actually love.
+            CS undergraduate passionate about full-stack development, solving hard problems, and
+            building products that make a real difference.
           </p>
         </motion.div>
 
@@ -72,19 +72,30 @@ export function About() {
               </h3>
               <div className="space-y-4 text-slate-400 leading-relaxed text-sm md:text-base">
                 <p>
-                  I'm a full-stack developer with a passion for building products that live at the
-                  intersection of great design and solid engineering. I've worked across the entire
-                  stack — from crafting pixel-perfect React UIs to architecting scalable Node.js
-                  backends and cloud infrastructure.
+                  I am a Computer Science undergraduate passionate about building full-stack
+                  applications and solving challenging technical problems. I like exploring new
+                  technologies, working on product-oriented projects, and writing efficient code.
                 </p>
                 <p>
-                  When I'm not shipping code, I contribute to open source, explore system design
-                  problems, and occasionally write about engineering on my blog. I believe the best
-                  software is the kind you don't notice — it just works.
+                  My strengths include problem solving, DSA, backend logic, and creating
+                  responsive user experiences. I've built projects integrating AI, payment
+                  gateways, and real-time features — always with a focus on clean architecture.
                 </p>
+                <div className="pt-2 rounded-xl bg-white/[0.02] border border-white/[0.05] p-4">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-2">Currently focused on</p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Full-stack development', 'System design basics', 'AI-integrated applications'].map((f) => (
+                      <span key={f} className="px-3 py-1 text-xs font-medium rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 <p className="text-slate-300">
-                  Currently open to <span className="text-cyan-400 font-medium">full-time opportunities</span> and
-                  interesting <span className="text-purple-400 font-medium">freelance projects</span>.
+                  Open to{' '}
+                  <span className="text-cyan-400 font-medium">full-time SDE roles</span> and
+                  interesting{' '}
+                  <span className="text-purple-400 font-medium">freelance / contract work</span>.
                 </p>
               </div>
 

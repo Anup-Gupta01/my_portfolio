@@ -4,8 +4,9 @@ import {
   ArrowRight, Download, ChevronDown, Sparkles,
   MapPin, ExternalLink,
 } from 'lucide-react'
-import { personalInfo, socialLinks } from '../data/portfolio'
+import { personalInfo, socialLinks, heroAchievements } from '../data/portfolio'
 import { socialIconMap } from './SocialIcons'
+import dpPhoto from '../assets/dp_photo.jpeg'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -85,21 +86,17 @@ function AvatarOrb() {
       <div className="absolute inset-0 rounded-full bg-gradient-radial from-cyan-500/10 via-blue-600/5 to-transparent" />
 
       {/* Avatar container */}
-      <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10"
-        style={{ boxShadow: '0 0 60px rgba(6,182,212,0.2)' }}>
-        <div className="w-full h-full bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 flex items-center justify-center">
-          {/* Initials avatar — swap with <img> once you have a real photo */}
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center"
-              style={{ boxShadow: '0 0 30px rgba(6,182,212,0.4)' }}>
-              <span className="text-4xl font-bold text-white font-mono">{personalInfo.avatarInitials}</span>
-            </div>
-            <div className="text-center">
-              <p className="text-sm font-semibold text-white/80">{personalInfo.name}</p>
-              <p className="text-xs text-cyan-400 font-mono">{personalInfo.role}</p>
-            </div>
-          </div>
-        </div>
+      <div
+        className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10"
+        style={{ boxShadow: '0 0 60px rgba(6,182,212,0.25)' }}
+      >
+        <img
+          src={dpPhoto}
+          alt={personalInfo.name}
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Subtle inner vignette to blend edges */}
+        <div className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgba(0,0,0,0.4)] pointer-events-none" />
       </div>
 
       {/* Floating available badge */}
@@ -192,25 +189,52 @@ export function Hero() {
               <span className="shimmer-text">{personalInfo.name}</span>
             </motion.h1>
 
-            {/* Role line */}
+            {/* Role tagline — three parts */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center lg:justify-start gap-3 mb-6"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6"
             >
-              <div className="h-px w-8 bg-gradient-to-r from-transparent to-cyan-500" />
-              <span className="text-lg md:text-xl font-semibold text-cyan-400 font-mono">
-                {personalInfo.role}
-              </span>
-              <div className="h-px w-8 bg-gradient-to-l from-transparent to-cyan-500" />
+              {['Full Stack Developer', 'Problem Solver', 'DSA Enthusiast'].map((part, i) => (
+                <span key={part} className="flex items-center gap-2">
+                  <span
+                    className={`text-sm md:text-base font-semibold font-mono ${
+                      i === 0 ? 'text-cyan-400' : i === 1 ? 'text-purple-400' : 'text-blue-400'
+                    }`}
+                  >
+                    {part}
+                  </span>
+                  {i < 2 && <span className="text-slate-600 text-sm">|</span>}
+                </span>
+              ))}
             </motion.div>
 
             {/* Bio */}
             <motion.p
               variants={itemVariants}
-              className="text-slate-400 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0"
+              className="text-slate-400 text-sm md:text-base leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0"
             >
               {personalInfo.bio}
             </motion.p>
+
+            {/* Achievement badges */}
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-8 max-w-xl mx-auto lg:mx-0"
+            >
+              {heroAchievements.map((ach, i) => (
+                <motion.div
+                  key={ach.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.9 + i * 0.07 }}
+                  whileHover={{ y: -2, scale: 1.02 }}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl glass-card border border-white/[0.06] hover:border-cyan-500/20 transition-all duration-200 cursor-default"
+                >
+                  <span className="text-sm shrink-0">{ach.icon}</span>
+                  <span className="text-[11px] font-medium text-slate-300 leading-tight">{ach.label}</span>
+                </motion.div>
+              ))}
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
