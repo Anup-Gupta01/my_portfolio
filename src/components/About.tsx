@@ -67,7 +67,7 @@ export function About() {
               className="glass-card rounded-2xl p-8 transition-all duration-300"
             >
               <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="w-6 h-6 rounded-md bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-xs">👋</span>
+                {/* <span className="w-6 h-6 rounded-md bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-xs"></span> */}
                 A little about me
               </h3>
               <div className="space-y-4 text-slate-400 leading-relaxed text-sm md:text-base">

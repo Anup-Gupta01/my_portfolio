@@ -2,10 +2,10 @@ export const personalInfo = {
   name: 'Anup Gupta',
   role: 'Full Stack Developer',
   tagline: 'Full Stack Developer | Problem Solver | DSA Enthusiast',
-  bio: 'I am a Computer Science student at MMU Gorakhpur, building modern web applications with React, Next.js, Node.js, and Express. I enjoy solving real-world problems, learning new technologies, and turning ideas into clean, scalable products. I also have a strong foundation in Data Structures and Algorithms and competitive programming.',
+  bio: 'I am a Computer Science student at MMMUT Gorakhpur, building modern web applications with React, Next.js, Node.js, and Express. I enjoy solving real-world problems, learning new technologies, and turning ideas into clean, scalable products. I also have a strong foundation in Data Structures and Algorithms and competitive programming.',
   location: 'Gorakhpur, Uttar Pradesh, India',
   email: 'anupg9643@gmail.com',
-  resumeUrl: '#',
+  resumeUrl: 'https://drive.google.com/file/d/1mflZSIxWfy4B-R0sUHXpUSJuLgeheLIt/view?usp=sharing',
   avatarInitials: 'AG',
 }
 
@@ -17,12 +17,12 @@ export const socialLinks = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/anup-gupta01',
+    href: 'https://www.linkedin.com/in/anupg02/',
     icon: 'linkedin',
   },
   {
     label: 'LeetCode',
-    href: 'https://leetcode.com/u/anupg9643/',
+    href: 'https://leetcode.com/u/AnupG12/',
     icon: 'leetcode',
   },
   {
