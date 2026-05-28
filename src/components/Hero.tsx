@@ -120,7 +120,7 @@ function AvatarOrb() {
         <span className="text-lg">⚡</span>
         <div>
           <p className="text-xs font-semibold text-white">Full-Stack</p>
-          <p className="text-[10px] text-slate-400">React · Node · Python</p>
+          <p className="text-[10px] text-slate-400">React · Node · Next</p>
         </div>
       </motion.div>
 

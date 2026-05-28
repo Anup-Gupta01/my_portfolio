@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Send, MapPin, MessageSquare, CheckCircle, Loader2 } from 'lucide-react'
+import { Mail, Send, MapPin, MessageSquare, CheckCircle, Loader2, AlertCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 import { personalInfo, socialLinks } from '../data/portfolio'
 import { socialIconMap } from './SocialIcons'
 
-
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  as string
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  as string
 
 type FormState = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -19,11 +22,28 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    // Simulate async send
-    await new Promise((r) => setTimeout(r, 1800))
-    setStatus('sent')
-    setForm({ name: '', email: '', subject: '', message: '' })
-    setTimeout(() => setStatus('idle'), 4000)
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:    form.name,
+          from_email:   form.email,
+          subject:      form.subject,
+          message:      form.message,
+          to_email:     personalInfo.email,
+        },
+        EMAILJS_PUBLIC_KEY
+      )
+      setStatus('sent')
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setTimeout(() => setStatus('idle'), 5000)
+    } catch (err) {
+      console.error('EmailJS error:', err)
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 5000)
+    }
   }
 
   const inputClass =
@@ -172,7 +192,25 @@ export function Contact() {
                     Thanks for reaching out. I'll get back to you within 24 hours.
                   </p>
                 </motion.div>
+              ) : status === 'error' ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center py-16 gap-4"
+                >
+                  <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center">
+                    <AlertCircle size={32} className="text-red-400" />
+                  </div>
+                  <h4 className="text-xl font-bold text-white">Something went wrong</h4>
+                  <p className="text-slate-400 text-sm text-center max-w-xs">
+                    Failed to send your message. Please try again or email me directly at{' '}
+                    <a href={`mailto:${personalInfo.email}`} className="text-cyan-400 underline">
+                      {personalInfo.email}
+                    </a>
+                  </p>
+                </motion.div>
               ) : (
+
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>

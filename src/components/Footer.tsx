@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Heart, ArrowUp, Sparkles } from 'lucide-react'
+import { Heart, ArrowUp, Sparkles, Phone } from 'lucide-react'
 import { personalInfo, navItems } from '../data/portfolio'
 import { GitHubIcon, LinkedInIcon, MailIcon, TwitterIcon } from './SocialIcons'
 
@@ -13,8 +13,8 @@ function scrollToTop() {
 }
 
 const socials = [
-  { Icon: GitHubIcon, href: 'https://github.com/', label: 'GitHub' },
-  { Icon: LinkedInIcon, href: 'https://linkedin.com/', label: 'LinkedIn' },
+  { Icon: GitHubIcon, href: 'https://github.com/Anup-Gupta01', label: 'GitHub' },
+  { Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/anupg02/', label: 'LinkedIn' },
   { Icon: TwitterIcon, href: 'https://twitter.com/', label: 'Twitter' },
   { Icon: MailIcon, href: `mailto:${personalInfo.email}`, label: 'Email' },
 ]
@@ -98,15 +98,24 @@ export function Footer() {
               <MailIcon size={13} />
               Get in Touch
             </motion.button>
+            <a
+              href={`tel:${personalInfo.phone}`}
+              className="flex items-center gap-2 mt-3 text-sm text-slate-500 hover:text-cyan-400 transition-colors duration-200"
+            >
+              <Phone size={13} className="text-cyan-500" />
+              {personalInfo.phone}
+            </a>
           </div>
         </div>
 
         {/* Divider */}
         <div className="border-t border-white/[0.05] pt-7 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-600 flex items-center gap-1.5">
-            © {year} {personalInfo.name}. Made with
-            <Heart size={10} className="text-pink-500 fill-pink-500" />
-            in {personalInfo.location}.
+            {/* © {year} {personalInfo.name}. Made with */}{
+              <p> All copyright is reserved  © {year}</p>
+            }
+            {/* <Heart size={10} className="text-pink-500 fill-pink-500" /> */}
+            {/* in {personalInfo.location}. */}
           </p>
           <p className="text-xs text-slate-600">
             Built with React · TypeScript · Tailwind · Framer Motion

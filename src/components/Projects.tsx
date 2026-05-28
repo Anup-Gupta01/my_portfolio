@@ -87,6 +87,7 @@ interface Project {
   featured: boolean
   gradient: string
   accentColor: string
+  image?: string
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -110,11 +111,19 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           whileHover={{ scale: 1.06 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <ProjectPreview
-            title={project.title}
-            gradient={cn('bg-gradient-to-br', previewGradientMap[project.accentColor])}
-            accentColor={project.accentColor}
-          />
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              className="w-full h-full object-cover object-top"
+            />
+          ) : (
+            <ProjectPreview
+              title={project.title}
+              gradient={cn('bg-gradient-to-br', previewGradientMap[project.accentColor])}
+              accentColor={project.accentColor}
+            />
+          )}
         </motion.div>
 
         {/* Featured badge */}
