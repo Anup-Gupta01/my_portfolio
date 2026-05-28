@@ -1,4 +1,5 @@
 // Inline SVG social icons — no dependency on lucide-react brand icons
+import type { FC } from 'react'
 
 interface IconProps {
   size?: number
@@ -46,7 +47,7 @@ export function MailIcon({ size = 16, className }: IconProps) {
   )
 }
 
-export const socialIconMap: Record<string, React.FC<IconProps>> = {
+export const socialIconMap: Record<string, FC<IconProps>> = {
   github: GitHubIcon,
   linkedin: LinkedInIcon,
   twitter: TwitterIcon,
