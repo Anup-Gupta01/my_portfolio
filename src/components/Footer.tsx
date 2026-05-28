@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Heart, ArrowUp, Sparkles, Phone } from 'lucide-react'
+import { ArrowUp, Sparkles, Phone } from 'lucide-react'
 import { personalInfo, navItems } from '../data/portfolio'
 import { GitHubIcon, LinkedInIcon, MailIcon, TwitterIcon } from './SocialIcons'
 
