@@ -1,116 +1,336 @@
-import { motion } from 'framer-motion'
-import { ArrowDown } from 'lucide-react'
-import { personalInfo, socialLinks } from '../data/portfolio'
+import { useRef } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import {
+  ArrowRight, Download, ChevronDown, Sparkles,
+  MapPin, ExternalLink,
+} from 'lucide-react'
+import { personalInfo, socialLinks, heroAchievements } from '../data/portfolio'
+import { socialIconMap } from './SocialIcons'
+import dpPhoto from '../assets/dp_photo.jpeg'
+
+const ease = [0.16, 1, 0.3, 1] as const
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease },
+  },
+}
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id)
-  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' })
+  if (el) {
+    const top = el.getBoundingClientRect().top + window.scrollY - 80
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+}
+
+function AvatarOrb() {
+  const ref = useRef<HTMLDivElement>(null)
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const rotateX = useSpring(useTransform(mouseY, [-100, 100], [8, -8]), { stiffness: 200, damping: 20 })
+  const rotateY = useSpring(useTransform(mouseX, [-100, 100], [-8, 8]), { stiffness: 200, damping: 20 })
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = ref.current?.getBoundingClientRect()
+    if (!rect) return
+    mouseX.set(e.clientX - rect.left - rect.width / 2)
+    mouseY.set(e.clientY - rect.top - rect.height / 2)
+  }
+
+  const handleMouseLeave = () => {
+    mouseX.set(0)
+    mouseY.set(0)
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformPerspective: 800 }}
+      className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px]"
+    >
+      {/* Rotating ring 1 */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 12, ease: 'linear' }}
+        className="absolute inset-0 rounded-full border border-cyan-500/20"
+        style={{ transform: 'scale(1.15)' }}
+      />
+      {/* Rotating ring 2 */}
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
+        className="absolute inset-0 rounded-full border border-blue-500/15"
+        style={{ transform: 'scale(1.3)' }}
+      />
+      {/* Outer glow ring */}
+      <div
+        className="absolute inset-0 rounded-full border border-cyan-500/10"
+        style={{ transform: 'scale(1.45)', boxShadow: '0 0 80px rgba(6,182,212,0.12)' }}
+      />
+
+      {/* Glow bg */}
+      <div className="absolute inset-0 rounded-full bg-gradient-radial from-cyan-500/10 via-blue-600/5 to-transparent" />
+
+      {/* Avatar container */}
+      <div
+        className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10"
+        style={{ boxShadow: '0 0 60px rgba(6,182,212,0.25)' }}
+      >
+        <img
+          src={dpPhoto}
+          alt={personalInfo.name}
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Subtle inner vignette to blend edges */}
+        <div className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgba(0,0,0,0.4)] pointer-events-none" />
+      </div>
+
+      {/* Floating available badge */}
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+        className="absolute -top-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full glass border border-green-500/30"
+        style={{ boxShadow: '0 0 16px rgba(34,197,94,0.15)' }}
+      >
+        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"
+          style={{ boxShadow: '0 0 6px rgba(74,222,128,0.8)' }} />
+        <span className="text-xs font-medium text-green-300 whitespace-nowrap">Available for opportunities</span>
+      </motion.div>
+
+      {/* Floating tech badge */}
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1 }}
+        className="absolute -right-4 bottom-12 flex items-center gap-2 px-3 py-2 rounded-xl glass border border-purple-500/20"
+      >
+        <span className="text-lg">⚡</span>
+        <div>
+          <p className="text-xs font-semibold text-white">Full-Stack</p>
+          <p className="text-[10px] text-slate-400">React · Node · Next</p>
+        </div>
+      </motion.div>
+
+      {/* Floating location badge */}
+      <motion.div
+        animate={{ y: [0, -5, 0] }}
+        transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut', delay: 0.5 }}
+        className="absolute -left-4 bottom-16 flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass border border-white/10"
+      >
+        <MapPin size={11} className="text-cyan-400" />
+        <span className="text-xs text-slate-300">{personalInfo.location}</span>
+      </motion.div>
+    </motion.div>
+  )
 }
 
 export function Hero() {
   return (
     <section
-      id="intro"
-      className="relative min-h-screen flex flex-col justify-center pt-20 pb-20 px-6 lg:px-10"
+      id="hero"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Available indicator */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="label-mono flex items-center gap-2.5 mb-12"
-        >
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          Open to full-time SDE roles &amp; freelance work
-        </motion.p>
+      {/* Background layers */}
+      <div className="absolute inset-0 bg-hero-glow" />
+      <div className="absolute inset-0 bg-cyan-glow" />
 
-        {/* Main heading — big, serif, editorial */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.1 }}
-          className="font-display font-bold leading-[1.02] tracking-tight text-stone-100 mb-10"
-          style={{ fontSize: 'clamp(3rem, 8vw, 5.5rem)' }}
-        >
-          Building software<br />
-          <em className="text-amber-400">people actually</em><br />
-          want to use.
-        </motion.h1>
+      {/* Animated blobs */}
+      <motion.div
+        animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
+        transition={{ repeat: Infinity, duration: 18, ease: 'easeInOut' }}
+        className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-cyan-500/5 blur-[100px] pointer-events-none"
+      />
+      <motion.div
+        animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
+        transition={{ repeat: Infinity, duration: 22, ease: 'easeInOut', delay: 3 }}
+        className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-purple-500/5 blur-[120px] pointer-events-none"
+      />
 
-        {/* Who / where */}
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.28 }}
-          className="text-stone-400 text-lg mb-5 tracking-tight"
-        >
-          {personalInfo.name} —{' '}
-          <span className="text-stone-500">
-            CS student at MMMUT Gorakhpur, full-stack developer.
-          </span>
-        </motion.p>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 w-full">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16">
 
-        {/* Bio paragraph */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.38 }}
-          className="text-stone-500 text-base leading-relaxed max-w-lg mb-14"
-        >
-          {personalInfo.bio}
-        </motion.p>
-
-        {/* CTAs — text links, not buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-wrap items-center gap-10 mb-16"
-        >
-          <button
-            onClick={() => scrollToSection('work')}
-            className="flex items-center gap-2.5 text-sm text-stone-300 hover:text-white transition-colors group"
+          {/* Left: Text content */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex-1 text-center lg:text-left max-w-2xl"
           >
-            <ArrowDown
-              size={13}
-              className="text-amber-400 group-hover:translate-y-0.5 transition-transform duration-150"
-            />
-            View selected work
-          </button>
-          <a
-            href={personalInfo.resumeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-stone-600 hover:text-stone-400 underline underline-offset-4 decoration-stone-700 hover:decoration-stone-500 transition-colors"
-          >
-            Download résumé
-          </a>
-        </motion.div>
+            {/* Eyebrow badge */}
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/5">
+                <Sparkles size={13} className="text-cyan-400" />
+                <span className="text-xs font-medium text-cyan-300 tracking-wide">
+                  Open to Full-Time & Freelance
+                </span>
+              </div>
+            </motion.div>
 
-        {/* Social links — plain uppercase text, not icon tiles */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.65 }}
-          className="flex flex-wrap gap-6"
-        >
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith('mailto') ? undefined : '_blank'}
-              rel="noopener noreferrer"
-              className="label-mono hover:text-stone-400 transition-colors"
+            {/* Heading */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-4"
             >
-              {link.label}
-            </a>
-          ))}
+              <span className="text-white">Hey, I'm</span>
+              <br />
+              <span className="shimmer-text">{personalInfo.name}</span>
+            </motion.h1>
+
+            {/* Role tagline — three parts */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6"
+            >
+              {['Full Stack Developer', 'Problem Solver', 'DSA Enthusiast'].map((part, i) => (
+                <span key={part} className="flex items-center gap-2">
+                  <span
+                    className={`text-sm md:text-base font-semibold font-mono ${
+                      i === 0 ? 'text-cyan-400' : i === 1 ? 'text-purple-400' : 'text-blue-400'
+                    }`}
+                  >
+                    {part}
+                  </span>
+                  {i < 2 && <span className="text-slate-600 text-sm">|</span>}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* Bio */}
+            <motion.p
+              variants={itemVariants}
+              className="text-slate-400 text-sm md:text-base leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0"
+            >
+              {personalInfo.bio}
+            </motion.p>
+
+            {/* Achievement badges */}
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-8 max-w-xl mx-auto lg:mx-0"
+            >
+              {heroAchievements.map((ach, i) => (
+                <motion.div
+                  key={ach.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.9 + i * 0.07 }}
+                  whileHover={{ y: -2, scale: 1.02 }}
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl glass-card border border-white/[0.06] hover:border-cyan-500/20 transition-all duration-200 cursor-default"
+                >
+                  <span className="text-sm shrink-0">{ach.icon}</span>
+                  <span className="text-[11px] font-medium text-slate-300 leading-tight">{ach.label}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-10"
+            >
+              <motion.button
+                whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(6,182,212,0.5)' }}
+                whileTap={{ scale: 0.96 }}
+                onClick={() => scrollToSection('projects')}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 transition-all duration-300"
+                style={{ boxShadow: '0 0 30px rgba(6,182,212,0.3)' }}
+              >
+                View Projects
+                <ArrowRight size={16} />
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={() => scrollToSection('contact')}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white glass-card hover:border-cyan-500/30 transition-all duration-300"
+              >
+                Contact Me
+                <ExternalLink size={15} />
+              </motion.button>
+
+              <motion.a
+                href={personalInfo.resumeUrl}
+                download
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-slate-300 hover:text-white border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300"
+              >
+                <Download size={15} />
+                Resume
+              </motion.a>
+            </motion.div>
+
+            {/* Social links */}
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center justify-center lg:justify-start gap-3"
+            >
+              <span className="text-xs text-slate-500 font-mono mr-1">find me on</span>
+              {socialLinks.map((link, i) => {
+                const Icon = socialIconMap[link.icon]
+                return (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={link.label}
+                    whileHover={{ scale: 1.2, y: -3 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 + i * 0.08 }}
+                    className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-200"
+                  >
+                    {Icon && <Icon size={16} />}
+                  </motion.a>
+                )
+              })}
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Avatar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease, delay: 0.1 }}
+            className="flex justify-center"
+          >
+            <AvatarOrb />
+          </motion.div>
+        </div>
+
+        {/* Scroll hint */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
+          onClick={() => scrollToSection('about')}
+        >
+          <span className="text-xs text-slate-500 font-mono tracking-widest uppercase">scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.8 }}
+          >
+            <ChevronDown size={18} className="text-slate-500" />
+          </motion.div>
         </motion.div>
       </div>
-
-      {/* Thin ruled bottom line — separates this section from the next */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.05]" />
     </section>
   )
 }
