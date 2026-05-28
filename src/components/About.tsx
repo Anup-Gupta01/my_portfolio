@@ -14,24 +14,24 @@ const fadeUp = {
 }
 
 const skillCategories = [
-  { key: 'frontend' as const, label: 'Frontend', icon: Code2, color: 'cyan' },
-  { key: 'backend' as const, label: 'Backend', icon: Server, color: 'blue' },
-  { key: 'devops' as const, label: 'DevOps & Tools', icon: Cloud, color: 'purple' },
-  { key: 'tools' as const, label: 'DSA & Others', icon: Wrench, color: 'pink' },
+  { key: 'frontend' as const, label: 'Frontend', icon: Code2, color: 'violet' },
+  { key: 'backend' as const, label: 'Backend', icon: Server, color: 'pink' },
+  { key: 'devops' as const, label: 'DevOps & Tools', icon: Cloud, color: 'rose' },
+  { key: 'tools' as const, label: 'DSA & Others', icon: Wrench, color: 'fuchsia' },
 ]
 
 const colorMap: Record<string, string> = {
-  cyan: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
-  blue: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
-  purple: 'text-purple-400 bg-purple-500/10 border-purple-500/20',
-  pink: 'text-pink-400 bg-pink-500/10 border-pink-500/20',
+  violet: 'text-violet-400 bg-violet-500/10 border-violet-500/20',
+  pink:   'text-pink-400 bg-pink-500/10 border-pink-500/20',
+  rose:   'text-rose-400 bg-rose-500/10 border-rose-500/20',
+  fuchsia:'text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/20',
 }
 
 export function About() {
   return (
     <section id="about" className="relative section-padding overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-600/4 blur-[150px] pointer-events-none" />
+      {/* Background accent — violet */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-violet-600/4 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
@@ -42,9 +42,9 @@ export function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-4">
-            <User size={13} className="text-blue-400" />
-            <span className="text-xs font-medium text-blue-300 tracking-wide">About Me</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 mb-4">
+            <User size={13} className="text-violet-400" />
+            <span className="text-xs font-medium text-violet-300 tracking-wide">About Me</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             The developer behind the{' '}
@@ -66,8 +66,7 @@ export function About() {
               transition={{ duration: 0.6 }}
               className="glass-card rounded-2xl p-8 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                {/* <span className="w-6 h-6 rounded-md bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-xs"></span> */}
+              <h3 className="text-xl font-bold text-white mb-4">
                 A little about me
               </h3>
               <div className="space-y-4 text-slate-400 leading-relaxed text-sm md:text-base">
@@ -85,7 +84,7 @@ export function About() {
                   <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-2">Currently focused on</p>
                   <div className="flex flex-wrap gap-2">
                     {['Full-stack development', 'System design basics', 'AI-integrated applications'].map((f) => (
-                      <span key={f} className="px-3 py-1 text-xs font-medium rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+                      <span key={f} className="px-3 py-1 text-xs font-medium rounded-lg bg-violet-500/10 border border-violet-500/20 text-violet-300">
                         {f}
                       </span>
                     ))}
@@ -93,9 +92,9 @@ export function About() {
                 </div>
                 <p className="text-slate-300">
                   Open to{' '}
-                  <span className="text-cyan-400 font-medium">full-time SDE roles</span> and
+                  <span className="text-violet-400 font-medium">full-time SDE roles</span> and
                   interesting{' '}
-                  <span className="text-purple-400 font-medium">freelance / contract work</span>.
+                  <span className="text-pink-400 font-medium">freelance / contract work</span>.
                 </p>
               </div>
 
@@ -104,9 +103,9 @@ export function About() {
                 download
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl text-sm font-semibold text-white border border-cyan-500/30 hover:bg-cyan-500/10 hover:border-cyan-500/50 transition-all duration-200"
+                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-xl text-sm font-semibold text-white border border-violet-500/30 hover:bg-violet-500/10 hover:border-violet-500/50 transition-all duration-200"
               >
-                <Download size={14} className="text-cyan-400" />
+                <Download size={14} className="text-violet-400" />
                 Download Resume
               </motion.a>
             </motion.div>

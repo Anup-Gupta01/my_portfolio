@@ -47,12 +47,12 @@ export function Contact() {
   }
 
   const inputClass =
-    'w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-cyan-500/50 focus:bg-cyan-500/[0.03] focus:shadow-[0_0_0_3px_rgba(6,182,212,0.1)] transition-all duration-200'
+    'w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-slate-500 text-sm focus:outline-none focus:border-violet-500/50 focus:bg-violet-500/[0.03] focus:shadow-[0_0_0_3px_rgba(139,92,246,0.1)] transition-all duration-200'
 
   return (
     <section id="contact" className="relative section-padding overflow-hidden">
       {/* Bg accent */}
-      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-cyan-600/5 blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-violet-600/5 blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -63,9 +63,9 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-4">
-            <Mail size={13} className="text-cyan-400" />
-            <span className="text-xs font-medium text-cyan-300 tracking-wide">Get In Touch</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 mb-4">
+            <Mail size={13} className="text-violet-400" />
+            <span className="text-xs font-medium text-violet-300 tracking-wide">Get In Touch</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             Let's build something{' '}
@@ -88,9 +88,9 @@ export function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
               whileHover={{ y: -4 }}
-              className="flex items-center gap-4 glass-card rounded-2xl p-5 transition-all duration-300 hover:border-cyan-500/30"
+              className="flex items-center gap-4 glass-card rounded-2xl p-5 transition-all duration-300 hover:border-violet-500/30"
             >
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 shrink-0">
                 <Mail size={18} />
               </div>
               <div>
@@ -107,7 +107,7 @@ export function Contact() {
               transition={{ duration: 0.5, delay: 0.08 }}
               className="flex items-center gap-4 glass-card rounded-2xl p-5"
             >
-              <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 shrink-0">
                 <MapPin size={18} />
               </div>
               <div>
@@ -154,7 +154,7 @@ export function Contact() {
                       aria-label={link.label}
                       whileHover={{ scale: 1.15, y: -3 }}
                       whileTap={{ scale: 0.9 }}
-                      className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-200"
+                      className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-400 hover:text-violet-400 hover:border-violet-500/30 transition-all duration-200"
                     >
                       {Icon && <Icon size={16} />}
                     </motion.a>
@@ -174,7 +174,7 @@ export function Contact() {
           >
             <div className="glass-card rounded-2xl p-8 transition-all duration-300">
               <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                <MessageSquare size={18} className="text-cyan-400" />
+                <MessageSquare size={18} className="text-violet-400" />
                 Send me a message
               </h3>
 
@@ -204,7 +204,7 @@ export function Contact() {
                   <h4 className="text-xl font-bold text-white">Something went wrong</h4>
                   <p className="text-slate-400 text-sm text-center max-w-xs">
                     Failed to send your message. Please try again or email me directly at{' '}
-                    <a href={`mailto:${personalInfo.email}`} className="text-cyan-400 underline">
+                    <a href={`mailto:${personalInfo.email}`} className="text-violet-400 underline">
                       {personalInfo.email}
                     </a>
                   </p>
@@ -276,7 +276,7 @@ export function Contact() {
                     disabled={status === 'sending'}
                     whileHover={{ scale: status !== 'sending' ? 1.02 : 1 }}
                     whileTap={{ scale: status !== 'sending' ? 0.97 : 1 }}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-glow-cyan hover:shadow-[0_0_40px_rgba(6,182,212,0.4)] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-violet-500 to-pink-600 shadow-glow-cyan hover:shadow-[0_0_40px_rgba(139,92,246,0.4)] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {status === 'sending' ? (
                       <>

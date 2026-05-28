@@ -25,7 +25,7 @@ export function Footer() {
   return (
     <footer className="relative border-t border-white/[0.05] bg-[#030712] overflow-hidden">
       {/* Subtle top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -36,7 +36,7 @@ export function Footer() {
               onClick={scrollToTop}
               className="flex items-center gap-2.5 mb-4 group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-glow-cyan group-hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] transition-shadow duration-300">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-pink-600 flex items-center justify-center shadow-glow-cyan group-hover:shadow-[0_0_25px_rgba(139,92,246,0.55)] transition-shadow duration-300">
                 <span className="text-sm font-bold text-white font-mono">{personalInfo.avatarInitials}</span>
               </div>
               <span className="text-base font-bold text-white/90 group-hover:text-white transition-colors">
@@ -48,7 +48,7 @@ export function Footer() {
               Full-stack developer crafting high-quality web experiences with modern technologies.
             </p>
             <div className="flex items-center gap-1.5 mt-4">
-              <Sparkles size={11} className="text-cyan-400" />
+              <Sparkles size={11} className="text-violet-400" />
               <span className="text-xs text-slate-500">Open to new opportunities</span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export function Footer() {
                 <li key={item.href}>
                   <button
                     onClick={() => scrollToSection(item.href)}
-                    className="text-sm text-slate-500 hover:text-cyan-400 transition-colors duration-200"
+                    className="text-sm text-slate-500 hover:text-violet-400 transition-colors duration-200"
                   >
                     {item.label}
                   </button>
@@ -83,26 +83,26 @@ export function Footer() {
                   aria-label={label}
                   whileHover={{ scale: 1.15, y: -3 }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-9 h-9 rounded-xl border border-white/[0.08] flex items-center justify-center text-slate-500 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/[0.06] transition-all duration-200"
+                  className="w-9 h-9 rounded-xl border border-white/[0.08] flex items-center justify-center text-slate-500 hover:text-violet-400 hover:border-violet-500/30 hover:bg-violet-500/[0.06] transition-all duration-200"
                 >
                   <Icon size={15} />
                 </motion.a>
               ))}
             </div>
             <motion.button
-              whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(6,182,212,0.4)' }}
+              whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(139,92,246,0.4)' }}
               whileTap={{ scale: 0.96 }}
               onClick={() => scrollToSection('contact')}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-glow-cyan transition-all duration-200"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-pink-600 shadow-glow-cyan transition-all duration-200"
             >
               <MailIcon size={13} />
               Get in Touch
             </motion.button>
             <a
               href={`tel:${personalInfo.phone}`}
-              className="flex items-center gap-2 mt-3 text-sm text-slate-500 hover:text-cyan-400 transition-colors duration-200"
+              className="flex items-center gap-2 mt-3 text-sm text-slate-500 hover:text-violet-400 transition-colors duration-200"
             >
-              <Phone size={13} className="text-cyan-500" />
+              <Phone size={13} className="text-violet-400" />
               {personalInfo.phone}
             </a>
           </div>
@@ -125,7 +125,7 @@ export function Footer() {
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Back to top"
-            className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-slate-500 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-200"
+            className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-slate-500 hover:text-violet-400 hover:border-violet-500/30 transition-all duration-200"
           >
             <ArrowUp size={13} />
           </motion.button>

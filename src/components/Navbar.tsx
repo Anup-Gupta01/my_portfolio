@@ -45,7 +45,7 @@ export function Navbar() {
               onClick={() => scrollToSection('hero')}
               className="flex items-center gap-2 group"
             >
-              <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-glow-cyan group-hover:shadow-[0_0_25px_rgba(6,182,212,0.5)] transition-shadow duration-300">
+              <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-pink-600 flex items-center justify-center shadow-glow-cyan group-hover:shadow-[0_0_25px_rgba(139,92,246,0.55)] transition-shadow duration-300">
                 <span className="text-sm font-bold text-white font-mono">
                   {personalInfo.avatarInitials}
                 </span>
@@ -80,7 +80,7 @@ export function Navbar() {
                   {activeSection === item.href && (
                     <motion.div
                       layoutId="nav-dot"
-                      className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan-400"
+                      className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-violet-400"
                     />
                   )}
                 </button>
@@ -93,7 +93,7 @@ export function Navbar() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => scrollToSection('contact')}
-                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 shadow-glow-cyan hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] transition-shadow duration-300"
+                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-pink-600 shadow-glow-cyan hover:shadow-[0_0_30px_rgba(139,92,246,0.55)] transition-shadow duration-300"
               >
                 <Sparkles size={14} />
                 Hire Me
@@ -144,7 +144,7 @@ export function Navbar() {
                   scrollToSection('contact')
                   setMobileOpen(false)
                 }}
-                className="mt-2 px-4 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 text-center"
+                className="mt-2 px-4 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-pink-600 text-center"
               >
                 Hire Me
               </button>

@@ -62,40 +62,39 @@ function AvatarOrb() {
       style={{ rotateX, rotateY, transformPerspective: 800 }}
       className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px]"
     >
-      {/* Rotating ring 1 */}
+      {/* Rotating ring 1 — violet */}
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 12, ease: 'linear' }}
-        className="absolute inset-0 rounded-full border border-cyan-500/20"
+        className="absolute inset-0 rounded-full border border-violet-500/20"
         style={{ transform: 'scale(1.15)' }}
       />
-      {/* Rotating ring 2 */}
+      {/* Rotating ring 2 — pink */}
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-        className="absolute inset-0 rounded-full border border-blue-500/15"
+        className="absolute inset-0 rounded-full border border-pink-500/15"
         style={{ transform: 'scale(1.3)' }}
       />
       {/* Outer glow ring */}
       <div
-        className="absolute inset-0 rounded-full border border-cyan-500/10"
-        style={{ transform: 'scale(1.45)', boxShadow: '0 0 80px rgba(6,182,212,0.12)' }}
+        className="absolute inset-0 rounded-full border border-violet-500/10"
+        style={{ transform: 'scale(1.45)', boxShadow: '0 0 80px rgba(139,92,246,0.12)' }}
       />
 
       {/* Glow bg */}
-      <div className="absolute inset-0 rounded-full bg-gradient-radial from-cyan-500/10 via-blue-600/5 to-transparent" />
+      <div className="absolute inset-0 rounded-full bg-gradient-radial from-violet-500/10 via-pink-600/5 to-transparent" />
 
-      {/* Avatar container */}
+      {/* Avatar */}
       <div
         className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10"
-        style={{ boxShadow: '0 0 60px rgba(6,182,212,0.25)' }}
+        style={{ boxShadow: '0 0 60px rgba(139,92,246,0.25)' }}
       >
         <img
           src={dpPhoto}
           alt={personalInfo.name}
           className="w-full h-full object-cover object-center"
         />
-        {/* Subtle inner vignette to blend edges */}
         <div className="absolute inset-0 rounded-full shadow-[inset_0_0_40px_rgba(0,0,0,0.4)] pointer-events-none" />
       </div>
 
@@ -115,7 +114,7 @@ function AvatarOrb() {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 1 }}
-        className="absolute -right-4 bottom-12 flex items-center gap-2 px-3 py-2 rounded-xl glass border border-purple-500/20"
+        className="absolute -right-4 bottom-12 flex items-center gap-2 px-3 py-2 rounded-xl glass border border-violet-500/20"
       >
         <span className="text-lg">⚡</span>
         <div>
@@ -130,7 +129,7 @@ function AvatarOrb() {
         transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut', delay: 0.5 }}
         className="absolute -left-4 bottom-16 flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass border border-white/10"
       >
-        <MapPin size={11} className="text-cyan-400" />
+        <MapPin size={11} className="text-violet-400" />
         <span className="text-xs text-slate-300">{personalInfo.location}</span>
       </motion.div>
     </motion.div>
@@ -147,16 +146,16 @@ export function Hero() {
       <div className="absolute inset-0 bg-hero-glow" />
       <div className="absolute inset-0 bg-cyan-glow" />
 
-      {/* Animated blobs */}
+      {/* Animated blobs — violet tones */}
       <motion.div
         animate={{ x: [0, 30, 0], y: [0, -30, 0] }}
         transition={{ repeat: Infinity, duration: 18, ease: 'easeInOut' }}
-        className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-cyan-500/5 blur-[100px] pointer-events-none"
+        className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-violet-500/5 blur-[100px] pointer-events-none"
       />
       <motion.div
         animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
         transition={{ repeat: Infinity, duration: 22, ease: 'easeInOut', delay: 3 }}
-        className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-purple-500/5 blur-[120px] pointer-events-none"
+        className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-rose-500/5 blur-[120px] pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 w-full">
@@ -171,10 +170,10 @@ export function Hero() {
           >
             {/* Eyebrow badge */}
             <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/5">
-                <Sparkles size={13} className="text-cyan-400" />
-                <span className="text-xs font-medium text-cyan-300 tracking-wide">
-                  Open to Full-Time & Freelance
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-violet-500/30 bg-violet-500/5">
+                <Sparkles size={13} className="text-violet-400" />
+                <span className="text-xs font-medium text-violet-300 tracking-wide">
+                  Open to Full-Time &amp; Freelance
                 </span>
               </div>
             </motion.div>
@@ -189,7 +188,7 @@ export function Hero() {
               <span className="shimmer-text">{personalInfo.name}</span>
             </motion.h1>
 
-            {/* Role tagline — three parts */}
+            {/* Role tagline */}
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6"
@@ -198,7 +197,7 @@ export function Hero() {
                 <span key={part} className="flex items-center gap-2">
                   <span
                     className={`text-sm md:text-base font-semibold font-mono ${
-                      i === 0 ? 'text-cyan-400' : i === 1 ? 'text-purple-400' : 'text-blue-400'
+                      i === 0 ? 'text-violet-400' : i === 1 ? 'text-pink-400' : 'text-rose-400'
                     }`}
                   >
                     {part}
@@ -228,7 +227,7 @@ export function Hero() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.9 + i * 0.07 }}
                   whileHover={{ y: -2, scale: 1.02 }}
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl glass-card border border-white/[0.06] hover:border-cyan-500/20 transition-all duration-200 cursor-default"
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl glass-card border border-white/[0.06] hover:border-violet-500/20 transition-all duration-200 cursor-default"
                 >
                   <span className="text-sm shrink-0">{ach.icon}</span>
                   <span className="text-[11px] font-medium text-slate-300 leading-tight">{ach.label}</span>
@@ -242,11 +241,11 @@ export function Hero() {
               className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-10"
             >
               <motion.button
-                whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(6,182,212,0.5)' }}
+                whileHover={{ scale: 1.04, boxShadow: '0 0 40px rgba(139,92,246,0.5)' }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => scrollToSection('projects')}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 transition-all duration-300"
-                style={{ boxShadow: '0 0 30px rgba(6,182,212,0.3)' }}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-violet-500 to-pink-600 transition-all duration-300"
+                style={{ boxShadow: '0 0 30px rgba(139,92,246,0.3)' }}
               >
                 View Projects
                 <ArrowRight size={16} />
@@ -256,7 +255,7 @@ export function Hero() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => scrollToSection('contact')}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white glass-card hover:border-cyan-500/30 transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white glass-card hover:border-violet-500/30 transition-all duration-300"
               >
                 Contact Me
                 <ExternalLink size={15} />
@@ -294,7 +293,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 + i * 0.08 }}
-                    className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-200"
+                    className="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-400 hover:text-violet-400 hover:border-violet-500/30 transition-all duration-200"
                   >
                     {Icon && <Icon size={16} />}
                   </motion.a>

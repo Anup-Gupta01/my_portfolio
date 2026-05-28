@@ -10,32 +10,41 @@ const iconMap: Record<string, React.FC<{ size?: number; className?: string }>> =
   code2: Code2,
 }
 
+// Updated color maps — violet / pink / rose / emerald
 const glowMap: Record<string, string> = {
-  cyan: 'hover:border-cyan-500/40 hover:shadow-[0_0_50px_rgba(6,182,212,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
-  blue: 'hover:border-blue-500/40 hover:shadow-[0_0_50px_rgba(59,130,246,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
-  purple: 'hover:border-purple-500/40 hover:shadow-[0_0_50px_rgba(168,85,247,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
-  green: 'hover:border-green-500/40 hover:shadow-[0_0_50px_rgba(34,197,94,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
+  violet: 'hover:border-violet-500/40 hover:shadow-[0_0_50px_rgba(139,92,246,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
+  pink:   'hover:border-pink-500/40 hover:shadow-[0_0_50px_rgba(236,72,153,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
+  rose:   'hover:border-rose-500/40 hover:shadow-[0_0_50px_rgba(244,63,94,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
+  green:  'hover:border-emerald-500/40 hover:shadow-[0_0_50px_rgba(16,185,129,0.12),0_8px_40px_rgba(0,0,0,0.5)]',
 }
 
 const iconBgMap: Record<string, string> = {
-  cyan: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/25',
-  blue: 'text-blue-400 bg-blue-500/10 border-blue-500/25',
-  purple: 'text-purple-400 bg-purple-500/10 border-purple-500/25',
-  green: 'text-green-400 bg-green-500/10 border-green-500/25',
+  violet: 'text-violet-400 bg-violet-500/10 border-violet-500/25',
+  pink:   'text-pink-400 bg-pink-500/10 border-pink-500/25',
+  rose:   'text-rose-400 bg-rose-500/10 border-rose-500/25',
+  green:  'text-emerald-400 bg-emerald-500/10 border-emerald-500/25',
 }
 
 const tagMap: Record<string, string> = {
-  cyan: 'text-cyan-400/80 bg-cyan-500/[0.08] border-cyan-500/15',
-  blue: 'text-blue-400/80 bg-blue-500/[0.08] border-blue-500/15',
-  purple: 'text-purple-400/80 bg-purple-500/[0.08] border-purple-500/15',
-  green: 'text-green-400/80 bg-green-500/[0.08] border-green-500/15',
+  violet: 'text-violet-400/80 bg-violet-500/[0.08] border-violet-500/15',
+  pink:   'text-pink-400/80 bg-pink-500/[0.08] border-pink-500/15',
+  rose:   'text-rose-400/80 bg-rose-500/[0.08] border-rose-500/15',
+  green:  'text-emerald-400/80 bg-emerald-500/[0.08] border-emerald-500/15',
 }
 
 const gradientMap: Record<string, string> = {
-  cyan: 'from-cyan-500/10 via-transparent to-transparent',
-  blue: 'from-blue-500/10 via-transparent to-transparent',
-  purple: 'from-purple-500/10 via-transparent to-transparent',
-  green: 'from-green-500/10 via-transparent to-transparent',
+  violet: 'from-violet-500/10 via-transparent to-transparent',
+  pink:   'from-pink-500/10 via-transparent to-transparent',
+  rose:   'from-rose-500/10 via-transparent to-transparent',
+  green:  'from-emerald-500/10 via-transparent to-transparent',
+}
+
+// Remap old service colors → new palette
+const colorRemap: Record<string, string> = {
+  cyan:   'violet',
+  blue:   'pink',
+  purple: 'rose',
+  green:  'green',
 }
 
 const containerVariants = {
@@ -59,6 +68,7 @@ interface Service {
 
 function ServiceCard({ service }: { service: Service }) {
   const Icon = iconMap[service.icon] ?? Code2
+  const color = colorRemap[service.color] ?? service.color
 
   return (
     <motion.div
@@ -67,14 +77,14 @@ function ServiceCard({ service }: { service: Service }) {
       transition={{ type: 'spring', stiffness: 300, damping: 22 }}
       className={cn(
         'group relative glass-card rounded-2xl overflow-hidden p-7 transition-all duration-300 cursor-default',
-        glowMap[service.color]
+        glowMap[color]
       )}
     >
       {/* Gradient overlay on hover */}
       <div
         className={cn(
           'absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none',
-          gradientMap[service.color]
+          gradientMap[color]
         )}
       />
 
@@ -82,21 +92,21 @@ function ServiceCard({ service }: { service: Service }) {
       <div
         className={cn(
           'absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-400',
-          service.color === 'cyan' && 'bg-gradient-to-r from-transparent via-cyan-500/60 to-transparent',
-          service.color === 'blue' && 'bg-gradient-to-r from-transparent via-blue-500/60 to-transparent',
-          service.color === 'purple' && 'bg-gradient-to-r from-transparent via-purple-500/60 to-transparent',
-          service.color === 'green' && 'bg-gradient-to-r from-transparent via-green-500/60 to-transparent',
+          color === 'violet' && 'bg-gradient-to-r from-transparent via-violet-500/60 to-transparent',
+          color === 'pink'   && 'bg-gradient-to-r from-transparent via-pink-500/60 to-transparent',
+          color === 'rose'   && 'bg-gradient-to-r from-transparent via-rose-500/60 to-transparent',
+          color === 'green'  && 'bg-gradient-to-r from-transparent via-emerald-500/60 to-transparent',
         )}
       />
 
       <div className="relative">
         {/* Icon */}
-        <div className={cn('w-12 h-12 rounded-xl border flex items-center justify-center mb-5', iconBgMap[service.color])}>
+        <div className={cn('w-12 h-12 rounded-xl border flex items-center justify-center mb-5', iconBgMap[color])}>
           <Icon size={20} />
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white mb-3 group-hover:text-gradient-cyan transition-all duration-300">
+        <h3 className="text-lg font-bold text-white mb-3 group-hover:text-gradient transition-all duration-300">
           {service.title}
         </h3>
 
@@ -105,12 +115,12 @@ function ServiceCard({ service }: { service: Service }) {
           {service.description}
         </p>
 
-        {/* Tech tags */}
+        {/* Tags */}
         <div className="flex flex-wrap gap-2">
           {service.tags.map((tag) => (
             <span
               key={tag}
-              className={cn('px-2.5 py-1 rounded-lg text-[11px] font-medium border', tagMap[service.color])}
+              className={cn('px-2.5 py-1 rounded-lg text-[11px] font-medium border', tagMap[color])}
             >
               {tag}
             </span>
@@ -125,8 +135,8 @@ export function Services() {
   return (
     <section id="services" className="relative section-padding overflow-hidden">
       {/* Background accents */}
-      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-cyan-600/4 blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-purple-600/4 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] rounded-full bg-violet-600/4 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-rose-600/4 blur-[130px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
@@ -137,12 +147,12 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-4">
-            <Zap size={13} className="text-cyan-400" />
-            <span className="text-xs font-medium text-cyan-300 tracking-wide">What I Do</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 mb-4">
+            <Zap size={13} className="text-violet-400" />
+            <span className="text-xs font-medium text-violet-300 tracking-wide">What I Do</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Services &{' '}
+            Services &amp;{' '}
             <span className="text-gradient">Expertise</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
@@ -178,7 +188,7 @@ export function Services() {
               const el = document.getElementById('contact')
               if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' })
             }}
-            className="text-cyan-400 hover:text-cyan-300 underline underline-offset-4 transition-colors"
+            className="text-violet-400 hover:text-violet-300 underline underline-offset-4 transition-colors"
           >
             Let's talk
           </button>

@@ -22,6 +22,7 @@
     overflow-x: hidden;
   }
 
+  /* Scrollbar — violet accent */
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -31,12 +32,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(6, 182, 212, 0.25);
+    background: rgba(139, 92, 246, 0.3);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(6, 182, 212, 0.5);
+    background: rgba(139, 92, 246, 0.55);
   }
 }
 
@@ -56,42 +57,47 @@
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 4px 24px rgba(0, 0, 0, 0.4);
   }
 
+  /* Hover glow — violet instead of cyan */
   .glass-card:hover {
-    border-color: rgba(6, 182, 212, 0.2);
-    box-shadow: 0 0 0 1px rgba(6, 182, 212, 0.15), 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(6, 182, 212, 0.06);
+    border-color: rgba(139, 92, 246, 0.22);
+    box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.18), 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.07);
   }
 
+  /* Main gradient: violet → pink → rose */
   .text-gradient {
-    background: linear-gradient(135deg, #06b6d4, #3b82f6, #a855f7);
+    background: linear-gradient(135deg, #8b5cf6, #ec4899, #f43f5e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* Secondary gradient: violet → violet-light */
   .text-gradient-cyan {
-    background: linear-gradient(135deg, #06b6d4, #38bdf8);
+    background: linear-gradient(135deg, #8b5cf6, #a78bfa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
+  /* Glow border — violet */
   .glow-border {
-    border: 1px solid rgba(6, 182, 212, 0.4);
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), inset 0 0 20px rgba(6, 182, 212, 0.05);
+    border: 1px solid rgba(139, 92, 246, 0.45);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.18), inset 0 0 20px rgba(139, 92, 246, 0.06);
   }
 
   .section-padding {
     @apply py-24 px-4 sm:px-6 lg:px-8;
   }
 
+  /* Shimmer: violet ↔ rose/pink */
   .shimmer-text {
     background: linear-gradient(
       90deg,
-      #06b6d4 0%,
-      #a855f7 25%,
-      #06b6d4 50%,
-      #a855f7 75%,
-      #06b6d4 100%
+      #8b5cf6 0%,
+      #ec4899 25%,
+      #8b5cf6 50%,
+      #ec4899 75%,
+      #8b5cf6 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;

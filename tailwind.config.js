@@ -14,16 +14,19 @@ export default {
         'surface-2': '#161b22',
         border: 'rgba(255,255,255,0.08)',
         accent: {
-          cyan: '#06b6d4',
-          blue: '#3b82f6',
-          purple: '#a855f7',
-          pink: '#ec4899',
+          // Violet replaces cyan as the primary accent
+          cyan: '#8b5cf6',   // violet-500
+          blue: '#ec4899',   // pink-500 (replaces blue)
+          purple: '#f43f5e', // rose-500 (replaces purple)
+          pink: '#fb923c',   // orange-400 (replaces pink)
         },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-glow': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120,119,198,0.3), transparent)',
-        'cyan-glow': 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(6,182,212,0.15), transparent)',
+        // Hero glow: violet tones instead of blue-purple
+        'hero-glow': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139,92,246,0.25), transparent)',
+        // Primary glow: violet instead of cyan
+        'cyan-glow': 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(139,92,246,0.12), transparent)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
@@ -47,11 +50,12 @@ export default {
         },
       },
       boxShadow: {
-        'glow-cyan': '0 0 30px rgba(6,182,212,0.3)',
-        'glow-blue': '0 0 30px rgba(59,130,246,0.3)',
-        'glow-purple': '0 0 30px rgba(168,85,247,0.3)',
+        // All glow shadows now use violet tones
+        'glow-cyan': '0 0 30px rgba(139,92,246,0.35)',
+        'glow-blue': '0 0 30px rgba(236,72,153,0.3)',
+        'glow-purple': '0 0 30px rgba(244,63,94,0.3)',
         'card': '0 0 0 1px rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.4)',
-        'card-hover': '0 0 0 1px rgba(6,182,212,0.3), 0 8px 40px rgba(0,0,0,0.5), 0 0 40px rgba(6,182,212,0.1)',
+        'card-hover': '0 0 0 1px rgba(139,92,246,0.3), 0 8px 40px rgba(0,0,0,0.5), 0 0 40px rgba(139,92,246,0.1)',
       },
       backdropBlur: {
         xs: '2px',
